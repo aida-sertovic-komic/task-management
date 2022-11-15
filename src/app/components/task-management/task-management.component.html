@@ -1,3 +1,18 @@
 <div>
+    <div class="task-section">
+        <form class="example-form row" [formGroup]="taskForm"  (ngSubmit)="createTask()">
+            <mat-form-field class="col-12 example-full-width" appearance="fill">
+                <input matInput placeholder="Title" formControlName="title">
+            </mat-form-field>
+
+            <mat-form-field class="col-12 example-full-width" appearance="fill">
+                <mat-label>Description</mat-label>
+                <textarea matInput placeholder="Enter task description" formControlName="description"></textarea>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit">Create</button>
+
+        </form>
+    </div>
+
 
 </div>

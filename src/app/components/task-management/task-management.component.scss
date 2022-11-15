@@ -5,4 +5,18 @@ div {
     height: 100vh;
     width: 100%;
     background-color: $color-gray-background;
+
+    .task-section {
+       .row {
+        padding: 100px;
+        width: 150px;
+
+        .mat-form-field {
+            width: 400px;
+        }
+        button {
+            background-color: $color-primary;
+        }
+       }
+    }
 }
