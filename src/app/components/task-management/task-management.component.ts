@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Task } from '../models/task.model';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-task-management',
@@ -15,18 +16,29 @@ export class TaskManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskForm = new FormGroup({
+      id: new FormControl(''),
       title: new FormControl(''),
       description: new FormControl(''),
-      color: new FormControl('')
+      color: new FormControl(''),
+      dueDate: new FormControl(''),
+      priority: new FormControl()
     })
   }
 
   public createTask(): void {
     this.taskForm.get('color')?.patchValue(this.createRandomColor());
+    this.taskForm.get('dueDate')?.patchValue(this.createRandomDate(new Date(2023, 6,2), new Date(2023,7,31))) 
+    this.taskForm.get('id')?.patchValue(uuidv4());
     this.tasks.push(this.taskForm.value);
+
     localStorage.setItem('Tasks', JSON.stringify(this.tasks)) //store in localStorage
     // localStorage.clear();
 
+  }
+
+  public createRandomDate(start: Date, end: Date): Date {
+    const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    return date;
   }
 
   public createRandomColor(): string {
