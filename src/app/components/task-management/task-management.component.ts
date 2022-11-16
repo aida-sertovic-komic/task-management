@@ -21,7 +21,7 @@ export class TaskManagementComponent implements OnInit {
       description: new FormControl(''),
       color: new FormControl(''),
       dueDate: new FormControl(''),
-      priority: new FormControl(1)
+      priority: new FormControl()
     })
   }
 
@@ -35,12 +35,17 @@ export class TaskManagementComponent implements OnInit {
   }
 
   public addPriority(): void {
-    let str: any = localStorage.getItem('Tasks'); //get tasks from local storage
-    let strToObject: Task[] = JSON.parse(str); // convert string to array
-    let lastElem = strToObject[strToObject.length - 1]; // find last added item in array
-
-    (lastElem.priority == 1 || lastElem.priority == 2) ? this.taskForm.get('priority')?.patchValue(lastElem.priority + 1) : this.taskForm.get('priority')?.patchValue(1)
+    const taskList = this.loadTasks();
+     if (localStorage.getItem("Tasks") === null) {
+      this.taskForm.get('priority')?.patchValue(1)
+    }
+    else {
+      let lastItem = taskList[taskList?.length - 1]; // find last added item in array
+      (lastItem.priority == 1 || lastItem.priority == 2) ? this.taskForm.get('priority')?.patchValue(lastItem.priority + 1) : this.taskForm.get('priority')?.patchValue(1)
+    }
   }
+
+
 
   public createRandomDate(start: Date, end: Date): Date {
     const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
@@ -53,6 +58,12 @@ export class TaskManagementComponent implements OnInit {
     randomNumber = Math.floor(randomNumber); //convert float number to an integer
     const randomHexColor = '#' + randomNumber.toString(16); //convert integer to hexadecimal string
     return randomHexColor;
+  }
+
+  public loadTasks(): Task[] {
+    let str: any = localStorage.getItem('Tasks'); //get tasks from local storage
+    let strToObject: Task[] = JSON.parse(str); // convert string to array
+    return strToObject;
   }
 
 
