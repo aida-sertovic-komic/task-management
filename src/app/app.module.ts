@@ -29,8 +29,8 @@ import { TaskPreviewComponent } from './components/task-management/task-preview/
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatTableModule, MatPaginatorModule
-
+    MatTableModule, 
+    MatPaginatorModule
 
   ],
   providers: [],
