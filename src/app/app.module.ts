@@ -13,6 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TaskManagementComponent } from './components/task-management/task-management.component';
 import { TaskPreviewComponent } from './components/task-management/task-preview/task-preview.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -30,9 +31,8 @@ import { TaskPreviewComponent } from './components/task-management/task-preview/
     MatButtonModule,
     ReactiveFormsModule,
     MatTableModule, 
-    MatPaginatorModule
-
-  ],
+    MatIconModule,
+    MatPaginatorModule  ],
   providers: [],
   bootstrap: [AppComponent]
 })
