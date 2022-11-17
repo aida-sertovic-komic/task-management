@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Task } from '../../models/task.model';
 
 export interface PeriodicElement {
   name: string;
@@ -28,9 +29,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class TaskPreviewComponent implements OnInit {
   public displayedColumns: string[] = ['position','name','weight','symbol'];
   public dataSource = ELEMENT_DATA;
+  @Input() items: Task[] = [];
   constructor() { }
 
   ngOnInit(): void {
+    console.log('tasks from preview', this.items)
   }
 
 }
