@@ -13,15 +13,18 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TaskManagementComponent } from './components/task-management/task-management.component';
 import { TaskPreviewComponent } from './components/task-management/task-preview/task-preview.component';
-import {MatIconModule} from '@angular/material/icon';
-
+import { MatIconModule } from '@angular/material/icon';
+import { FilterStringPipe } from './components/service/filter-string.pipe';
+import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     TaskManagementComponent,
     FooterComponent,
-    TaskPreviewComponent
+    TaskPreviewComponent,
+    FilterStringPipe
+
   ],
   imports: [
     BrowserModule,
@@ -30,9 +33,10 @@ import {MatIconModule} from '@angular/material/icon';
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatTableModule, 
+    MatTableModule,
     MatIconModule,
-    MatPaginatorModule  ],
+    MatTooltipModule,
+    MatPaginatorModule],
   providers: [],
   bootstrap: [AppComponent]
 })
