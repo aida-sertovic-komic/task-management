@@ -14,7 +14,6 @@ export class TaskPreviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource = this.items.slice();
-    console.log(this.dataSource)
   }
 
 }
