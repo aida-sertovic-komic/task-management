@@ -7,13 +7,17 @@ import { Task } from '../../models/task.model';
   styleUrls: ['./task-preview.component.scss']
 })
 export class TaskPreviewComponent implements OnInit {
-  public displayedColumns: string[] = ['color','title', 'edit'];
+  public displayedColumns: string[] = ['color','title', 'update','details'];
   @Input() items: Task[] = [];
   public dataSource: Task[] = [];
   constructor() { }
 
   ngOnInit(): void {
     this.dataSource = this.items.slice();
+  }
+
+  public openDetails(task: Task): void {
+    console.log(task)
   }
 
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -36,6 +36,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatTableModule,
     MatIconModule,
     MatTooltipModule,
+    MatFormFieldModule,
     MatPaginatorModule],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from "@angular/core";
   export class FilterStringPipe implements PipeTransform {
   
     transform(value: string ): string {
-      if (value.length > 30) { 
+      if (value.length > 40) { 
          return value.substring(0,30)+'...';
         
       } else {
