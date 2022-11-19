@@ -7,9 +7,10 @@ import { Task } from '../../models/task.model';
   styleUrls: ['./task-preview.component.scss']
 })
 export class TaskPreviewComponent implements OnInit {
-  public displayedColumns: string[] = ['color','title', 'update','details'];
   @Input() items: Task[] = [];
+  public displayedColumns: string[] = ['color','title', 'update','details'];
   public dataSource: Task[] = [];
+  public filterTerm: string = '';
   constructor() { }
 
   ngOnInit(): void {

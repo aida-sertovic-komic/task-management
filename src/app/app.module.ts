@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { BrowserModule } from '@angular/platform-browser';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FilterStringPipe } from './components/service/filter-string.pipe';
 import { TaskManagementComponent } from './components/task-management/task-management.component';
 import { TaskPreviewComponent } from './components/task-management/task-preview/task-preview.component';
-import { MatIconModule } from '@angular/material/icon';
-import { FilterStringPipe } from './components/service/filter-string.pipe';
-import {MatTooltipModule} from '@angular/material/tooltip';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,8 +24,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     TaskManagementComponent,
     FooterComponent,
     TaskPreviewComponent,
-    FilterStringPipe
-
+    FilterStringPipe,
+    
   ],
   imports: [
     BrowserModule,
@@ -32,12 +33,15 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
+    FormsModule,
     ReactiveFormsModule,
     MatTableModule,
     MatIconModule,
     MatTooltipModule,
+    Ng2SearchPipeModule,
     MatFormFieldModule,
-    MatPaginatorModule],
+    ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

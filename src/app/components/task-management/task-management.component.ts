@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Task } from '../models/task.model';
 import { v4 as uuidv4 } from 'uuid';
 import { TaskService } from '../service/task.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-task-management',
