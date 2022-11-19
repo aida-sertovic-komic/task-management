@@ -14,17 +14,18 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FilterStringPipe } from './components/service/filter-string.pipe';
-import { TaskManagementComponent } from './components/task-management/task-management.component';
-import { TaskPreviewComponent } from './components/task-management/task-preview/task-preview.component';
+import { TaskAddComponent } from './components/task-add/task-add.component';
+import { TaskListComponent } from './components/task-list/task-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    TaskManagementComponent,
     FooterComponent,
-    TaskPreviewComponent,
+    TaskListComponent,
     FilterStringPipe,
+    TaskAddComponent,
+    TaskAddComponent
     
   ],
   imports: [
@@ -41,8 +42,6 @@ import { TaskPreviewComponent } from './components/task-management/task-preview/
     Ng2SearchPipeModule,
     MatFormFieldModule,
     ],
-
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

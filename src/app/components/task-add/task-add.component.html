@@ -1,0 +1,11 @@
+<form class="row" [formGroup]="taskForm" (ngSubmit)="createTask()">
+    <mat-form-field class="col-12" appearance="fill">
+        <input matInput placeholder="Title" formControlName="title" required>
+    </mat-form-field>
+
+    <mat-form-field class="col-12" appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput placeholder="Enter task description" formControlName="description"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Create</button>
+</form>

@@ -1,0 +1,9 @@
+table {
+  width: 80vw;
+}
+
+@media screen and (min-width: 992px) {
+  table {
+    width: 50vw;
+  }
+}
