@@ -6,4 +6,3 @@ export interface Task {
     priority: number;
     color: string;
 }
-

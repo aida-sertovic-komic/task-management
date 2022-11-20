@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Task } from '../models/task.model';
 import { TaskService } from '../service/task.service';
+
 @Component({
   selector: 'app-task-edit',
   templateUrl: './task-edit.component.html',
@@ -12,16 +13,15 @@ export class TaskEditComponent implements OnInit {
   public taskForm!: FormGroup;
   public minDate!: Date;
   public maxDate!: Date;
-  
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Task, private taskService: TaskService,
-  public dialogRef: MatDialogRef<TaskEditComponent>) { }
 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Task, private taskService: TaskService,
+    public dialogRef: MatDialogRef<TaskEditComponent>) {}
 
   ngOnInit(): void {
-
     const nextYear = new Date().getFullYear() + 1;
     this.minDate = new Date(nextYear, 6, 1);
     this.maxDate = new Date(nextYear, 7, 31);
+
     this.taskForm = new FormGroup({
       id: new FormControl(this.data?.id),
       title: new FormControl(this.data?.title, Validators.required),
@@ -31,6 +31,7 @@ export class TaskEditComponent implements OnInit {
       priority: new FormControl(this.data?.priority, [Validators.required, Validators.max(3), Validators.min(1)])
     })
   }
+
   get title() { return this.taskForm.get('title'); }
   get priority() { return this.taskForm.get('priority'); }
   get dueDate() { return this.taskForm.get('dueDate'); }
@@ -42,5 +43,4 @@ export class TaskEditComponent implements OnInit {
       this.dialogRef.close();
     }
   }
-
 }

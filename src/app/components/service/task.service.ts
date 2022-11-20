@@ -46,7 +46,6 @@ export class TaskService {
 
         localStorage.setItem('Tasks', JSON.stringify(this.tasks))
         this.tasks$.next(this.sortTasks(this.tasks));
-
     }
 
     public searchTasks(searchTerm: string): void {
@@ -61,7 +60,6 @@ export class TaskService {
         const sortedTasks = [...tasks].sort((a, b) => {
             return (a.priority - b.priority) || (new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime());
         })
-        
         return sortedTasks;
     }
 }

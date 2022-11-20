@@ -3,20 +3,21 @@
     height: 50vh;
 }
 
-h1{
+h1 {
     margin-bottom: 20px;
 }
 
-ul{
+ul {
     font-weight: 700;
     list-style: none;
-    li{
+
+    li {
         padding: 10px 0;
         display: flex;
         align-items: center;
         gap: 5px;
     }
-    
+
     span {
         font-weight: 400;
     }

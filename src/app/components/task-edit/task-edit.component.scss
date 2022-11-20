@@ -1,4 +1,5 @@
 @import '../../variables.scss';
+
 .row {
     padding-bottom: 50px;
 
@@ -20,7 +21,6 @@
 
 .button-wrapper {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin: 20px;
 }
-

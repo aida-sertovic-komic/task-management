@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,11 +20,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FilterStringPipe } from './components/service/filter-string.pipe';
 import { TaskAddComponent } from './components/task-add/task-add.component';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
-import { TaskListComponent } from './components/task-list/task-list.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { TaskEditComponent } from './components/task-edit/task-edit.component';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { TaskListComponent } from './components/task-list/task-list.component';
 
 @NgModule({
   declarations: [
@@ -56,4 +56,4 @@ import { MatNativeDateModule } from '@angular/material/core';
   bootstrap: [AppComponent],
   providers: [MatDatepickerModule]
 })
-export class AppModule { }
+export class AppModule {}
