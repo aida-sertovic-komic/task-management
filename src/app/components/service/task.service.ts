@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
 import { Task } from "../models/task.model";
 
 @Injectable({
@@ -8,6 +8,15 @@ import { Task } from "../models/task.model";
 export class TaskService {
     private tasks$ = new BehaviorSubject<Task[]>([]);
     private tasks: Task[] = this.parseTasks();
+    private selectedTask$ = new Subject<Task>;
+
+    public selectTask(task: Task): void {
+        this.selectedTask$.next(task);
+    }
+
+    public getSelectedTaskObservable(): Observable<Task> {
+        return this.selectedTask$;
+    }
 
     public parseTasks(): Task[] {
         const taskString: string = localStorage.getItem('Tasks') ?? '[]';

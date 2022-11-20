@@ -1,52 +1,62 @@
-    <div class="row search">
-        <mat-form-field color="primary">
-            <mat-label>Enter text to search</mat-label>
-            <input matInput type="text" [(ngModel)]="filterTerm" (ngModelChange)="searchTasks($event)">
-            <button *ngIf="filterTerm" matSuffix mat-icon-button aria-label="Clear" (click)="filterTerm=''">
-              <mat-icon>close</mat-icon>
+<div class="row search">
+    <mat-form-field color="primary">
+        <mat-label>Enter text to search</mat-label>
+        <input matInput type="text" [(ngModel)]="filterTerm" (ngModelChange)="searchTasks($event)">
+        <button *ngIf="filterTerm" matSuffix mat-icon-button aria-label="Clear" (click)="filterTerm=''">
+            <mat-icon aria-hidden="false" aria-label="Close" fontIcon="close"></mat-icon>
+        </button>
+    </mat-form-field>
+</div>
+<div  class="mat-elevation-z8 table-wrapper">
+<table mat-table [dataSource]="items">
+    <ng-container matColumnDef="color">
+        <th mat-header-cell *matHeaderCellDef> Color </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-icon [ngStyle]="{'color': element.color}" aria-hidden="false" aria-label="Edit" fontIcon="circle">
+            </mat-icon>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let element" matTooltip={{element.title}}> {{element.title | filterString }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="priority">
+        <th mat-header-cell *matHeaderCellDef> Priority </th>
+        <td mat-cell *matCellDef="let element"> {{element.priority}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dueDate">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.dueDate | date: 'mediumDate'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="update">
+        <th mat-header-cell *matHeaderCellDef> Edit </th>
+        <td mat-cell *matCellDef="">
+            <button mat-icon-button>
+                <mat-icon [ngStyle]="{'color':'#0982C6'}" aria-hidden="false" aria-label="Edit" fontIcon="edit">
+                </mat-icon>
             </button>
-          </mat-form-field>
-    </div>
-    <table mat-table [dataSource]="items$" class="mat-elevation-z8">
-        <ng-container matColumnDef="color">
-            <th mat-header-cell *matHeaderCellDef> Color </th>
-            <td mat-cell *matCellDef="let element">
-                <mat-icon [ngStyle]="{'color': element.color}" aria-hidden="false" aria-label="Edit" fontIcon="circle">
-                </mat-icon>
-            </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="title">
-            <th mat-header-cell *matHeaderCellDef> Title </th>
-            <td mat-cell *matCellDef="let element" matTooltip={{element.title}}> {{element.title | filterString }} </td>
-        </ng-container>
+        </td>
+    </ng-container>
 
-        <ng-container matColumnDef="priority">
-            <th mat-header-cell *matHeaderCellDef> Priority </th>
-            <td mat-cell *matCellDef="let element"> {{element.priority}} </td>
-        </ng-container>
+    <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef> Details </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button (click)="openDialog(element)">
+                <mat-icon [ngStyle]="{'color':'#0982C6'}" aria-hidden="false" aria-label="Details" fontIcon="description"></mat-icon>
+            </button>
+        </td>
+    </ng-container>
 
-        <ng-container matColumnDef="dueDate">
-            <th mat-header-cell *matHeaderCellDef> Date </th>
-            <td mat-cell *matCellDef="let element"> {{element.dueDate | date: 'mediumDate'}} </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="update">
-            <th mat-header-cell *matHeaderCellDef> Edit </th>
-            <td mat-cell *matCellDef="">
-                <mat-icon [ngStyle]="{'color':'#0982C6'}" aria-hidden="false" aria-label="Edit" fontIcon="edit"></mat-icon>
-            </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="details">
-            <th mat-header-cell *matHeaderCellDef> Details </th>
-            <td mat-cell *matCellDef="let element">
-                <mat-icon [ngStyle]="{'color':'#0982C6'}" aria-hidden="false" aria-label="Edit" fontIcon="description"
-                    (click)="openDetails(element)">
-                </mat-icon>
-            </td>
-        </ng-container>
-    
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]"
+                 showFirstLastButtons
+                 aria-label="Select number of tasks per page">
+  </mat-paginator>
+</div>

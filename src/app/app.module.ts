@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -15,7 +16,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FilterStringPipe } from './components/service/filter-string.pipe';
 import { TaskAddComponent } from './components/task-add/task-add.component';
+import { TaskDetailsComponent } from './components/task-details/task-details.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -25,14 +28,16 @@ import { TaskListComponent } from './components/task-list/task-list.component';
     TaskListComponent,
     FilterStringPipe,
     TaskAddComponent,
-    TaskAddComponent
-    
+    TaskDetailsComponent
+
   ],
   imports: [
     BrowserModule,
+    MatPaginatorModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,
+    MatDialogModule,
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -41,7 +46,7 @@ import { TaskListComponent } from './components/task-list/task-list.component';
     MatTooltipModule,
     Ng2SearchPipeModule,
     MatFormFieldModule,
-    ],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

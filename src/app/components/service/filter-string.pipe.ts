@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from "@angular/core";
   
     transform(value: string ): string {
       if (value.length > 40) { 
-         return value.substring(0,30)+'...';
+         return value.substring(0,40)+'...';
         
       } else {
         return value;

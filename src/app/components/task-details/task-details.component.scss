@@ -1,0 +1,29 @@
+::ng-deep .mat-dialog-container {
+    width: 80vw;
+    height: 50vh;
+}
+
+h1{
+    margin-bottom: 20px;
+}
+
+ul{
+    font-weight: 700;
+    list-style: none;
+    li{
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    span {
+        font-weight: 400;
+    }
+}
+
+@media screen and (min-width:992px) {
+    ::ng-deep .mat-dialog-container {
+        width: 50vw;
+    }
+}

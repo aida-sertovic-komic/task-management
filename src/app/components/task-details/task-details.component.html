@@ -1,0 +1,17 @@
+<h1 >{{data.title}}</h1>
+  <ul>
+    <li>
+      Description: 
+      <span >{{data.description}}</span> 
+    </li>
+    <li>
+      Priority: 
+      <span>{{data.priority}}</span> 
+    </li>
+    <li>
+      Color: <span> {{data.color}} </span> <mat-icon [ngStyle]="{'color': data.color }" aria-hidden="false" aria-label="color" fontIcon="circle"></mat-icon>
+    </li>
+    <li>
+      Due date: <span>{{data.dueDate | date: 'fullDate'}}</span> 
+    </li>
+  </ul>
