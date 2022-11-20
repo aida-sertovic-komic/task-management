@@ -1,35 +1,51 @@
-<form class="row" [formGroup]="taskForm">
-    <mat-form-field class="col-12" appearance="fill">
+<form class="row" [formGroup]="taskForm" (ngSubmit)="updateTask()">
+    <mat-form-field appearance="fill">
         <mat-label>Title</mat-label>
-        <input matInput placeholder="Title" formControlName="title" required >
+        <input matInput placeholder="Title" formControlName="title" required>
         <mat-error *ngIf="title?.hasError('required')">
             Title is required
         </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="col-12" appearance="fill">
+    <mat-form-field appearance="fill">
         <mat-label>Description</mat-label>
         <textarea matInput placeholder="Enter task description" formControlName="description"></textarea>
     </mat-form-field>
 
-    <mat-form-field class="col-12" appearance="fill">
+    <mat-form-field appearance="fill">
         <mat-label>Priority</mat-label>
-        <input type="number" matInput placeholder="Enter priority" formControlName="priority">
+        <input type="number" min="1" max="3" matInput placeholder="Enter priority" formControlName="priority" required>
+        <mat-error *ngIf="priority?.hasError('required')">
+            Priority is required
+        </mat-error>
+        <mat-error *ngIf="priority?.hasError('min') || priority?.hasError('max')">
+            Priority must have a value between 1 and 3
+        </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="col-12" appearance="fill">
+    <mat-form-field appearance="fill">
         <mat-label>Color</mat-label>
-        <input type="color" matInput placeholder="Choose color" formControlName="color">
+        <input type="color" matInput placeholder="Choose color" formControlName="color" required>
+        <mat-error *ngIf="color?.hasError('required')">
+            Color is required
+        </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-form-field appearance="fill" class="date-picker">
         <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="dueDate">
+        <input [min]="minDate" [max]="maxDate" matInput [matDatepicker]="picker" formControlName="dueDate" required>
+        <mat-error *ngIf="dueDate?.hasError('required')">
+            Due date is required
+        </mat-error>
+        <mat-error *ngIf="dueDate?.hasError('matDatepickerMin') || dueDate?.hasError('matDatepickerMax')">
+            Due date is out of range
+        </mat-error>
         <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker">
-          <mat-icon matDatepickerToggleIcon fontIcon="keyboard_arrow_down"></mat-icon>
-        </mat-datepicker-toggle>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-    <!-- <button mat-raised-button color="primary" type="submit">Create</button> -->
+
+    <div class="button-wrapper">
+        <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
 </form>

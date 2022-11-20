@@ -39,17 +39,29 @@ export class TaskService {
         this.tasks$.next(this.sortTasks(this.tasks));
     }
 
+    public editTask(task: Task): void {
+        this.tasks = this.tasks.map(item => {
+            return item.id === task.id ? { ...task } : item;
+        })
+
+        localStorage.setItem('Tasks', JSON.stringify(this.tasks))
+        this.tasks$.next(this.sortTasks(this.tasks));
+
+    }
+
     public searchTasks(searchTerm: string): void {
         const filteredTasks = this.tasks.filter(task => {
             return task.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
         })
+
         this.tasks$.next(filteredTasks)
     }
 
     public sortTasks(tasks: Task[]): Task[] {
-        const sortedTasks = tasks.sort((a, b) => {
+        const sortedTasks = [...tasks].sort((a, b) => {
             return (a.priority - b.priority) || (new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime());
         })
+        
         return sortedTasks;
     }
 }

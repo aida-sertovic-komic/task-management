@@ -1,19 +1,26 @@
 @import '../../variables.scss';
 .row {
     padding-bottom: 50px;
-    width: 80vw;
 
     .mat-form-field {
         width: 100%;
     }
 
+    .date-picker {
+        ::ng-deep .mat-form-field-infix {
+            display: flex;
+        }
+    }
+
     button {
         background-color: $color-primary;
+        margin-top: 20px;
     }
 }
 
-@media screen and (min-width: 992px) {
-    .row {
-      width: 50vw;
-    }
-  }
+.button-wrapper {
+    display: flex;
+    justify-content: end;
+    margin: 20px;
+}
+
