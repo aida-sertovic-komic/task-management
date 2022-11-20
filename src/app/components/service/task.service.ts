@@ -14,29 +14,33 @@ export class TaskService {
         const taskArray: Task[] = JSON.parse(taskString);
         return taskArray;
     }
+
     public initTasks(): void {
         const tasks = this.parseTasks();
-        this.tasks$.next(tasks);
+        this.tasks$.next(this.sortTasks(tasks));
     }
 
     public getTasksObservable(): Observable<Task[]> {
-        return this.tasks$.pipe();
-    }
-
-    public getTasks(): Task[] {
-        return this.tasks;
+        return this.tasks$;
     }
 
     public addTask(task: Task): void {
         this.tasks.push(task);
-        this.tasks$.next(this.tasks);
         localStorage.setItem('Tasks', JSON.stringify(this.tasks))
+        this.tasks$.next(this.sortTasks(this.tasks));
     }
-    
+
     public searchTasks(searchTerm: string): void {
         const filteredTasks = this.tasks.filter(task => {
             return task.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
         })
         this.tasks$.next(filteredTasks)
+    }
+
+    public sortTasks(tasks: Task[]): Task[] {
+        const sortedTasks = tasks.sort((a, b) => {
+            return (a.priority - b.priority) || (new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime());
+        })
+        return sortedTasks;
     }
 }

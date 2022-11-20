@@ -10,7 +10,7 @@ import { TaskService } from '../service/task.service';
 })
 export class TaskListComponent implements OnInit {
   public items$!: Observable<Task[]>;
-  public displayedColumns: string[] = ['color','title', 'update','details'];
+  public displayedColumns: string[] = ['color','title','priority','dueDate', 'update','details'];
   public filterTerm: string = '';
   constructor(private taskService: TaskService) { }
 
@@ -26,4 +26,5 @@ export class TaskListComponent implements OnInit {
   public openDetails(task: Task): void {
     console.log(task)
   }
+ 
 }

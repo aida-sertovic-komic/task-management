@@ -41,7 +41,7 @@ export class TaskAddComponent implements OnInit {
     }
   
     public addPriority(): void {
-      const taskList = this.taskService.getTasks();
+      const taskList = this.taskService.parseTasks();
       if (!taskList.length) {
         this.taskForm.get('priority')?.patchValue(1)
       }
