@@ -21,7 +21,7 @@ Some of the functionalities include:
 
 Follow these steps to run the project locally:
 1. Clone the project by typing the command in your terminal: `git clone https://github.com/aida-sertovic-komic/task-management.git`
-2. Navigate into the project root folder: `cd task/management`
+2. Navigate into the project root folder: `cd task-management`
 3. Install the necessary dependencies by running: `npm i`
 4. Run `ng serve` to start the development server
 5. Navigate to `http://localhost:4200/`
