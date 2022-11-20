@@ -1,5 +1,18 @@
 # TaskManagementApp
 
+## Get started
+
+Follow these steps to run the project locally:
+1. Clone the project by typing the command in your terminal: `git clone https://github.com/aida-sertovic-komic/task-management.git`
+2. Navigate into the project root folder: `cd task/management`
+3. Install the necessary dependencies by running: `npm i`
+4. Run `ng serve` to start the development server
+5. Navigate to `http://localhost:4200/`
+6. Add your tasks and store in the table and Local Storage
+
+Find additional and more detailed Angular CLI commands below.
+<br>
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.9.
 
 ## Development server
