@@ -18,7 +18,10 @@ import { FilterStringPipe } from './components/service/filter-string.pipe';
 import { TaskAddComponent } from './components/task-add/task-add.component';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { TaskEditComponent } from './components/task-edit/task-edit.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     TaskListComponent,
     FilterStringPipe,
     TaskAddComponent,
-    TaskDetailsComponent
+    TaskDetailsComponent,
+    TaskEditComponent
 
   ],
   imports: [
@@ -46,7 +50,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatTooltipModule,
     Ng2SearchPipeModule,
     MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [MatDatepickerModule]
 })
 export class AppModule { }

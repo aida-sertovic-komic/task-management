@@ -1,0 +1,35 @@
+<form class="row" [formGroup]="taskForm">
+    <mat-form-field class="col-12" appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Title" formControlName="title" required >
+        <mat-error *ngIf="title?.hasError('required')">
+            Title is required
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-12" appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput placeholder="Enter task description" formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="col-12" appearance="fill">
+        <mat-label>Priority</mat-label>
+        <input type="number" matInput placeholder="Enter priority" formControlName="priority">
+    </mat-form-field>
+
+    <mat-form-field class="col-12" appearance="fill">
+        <mat-label>Color</mat-label>
+        <input type="color" matInput placeholder="Choose color" formControlName="color">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dueDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon fontIcon="keyboard_arrow_down"></mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    <!-- <button mat-raised-button color="primary" type="submit">Create</button> -->
+</form>

@@ -6,6 +6,7 @@ import { config, Observable } from 'rxjs';
 import { Task } from '../models/task.model';
 import { TaskService } from '../service/task.service';
 import { TaskDetailsComponent } from '../task-details/task-details.component';
+import { TaskEditComponent } from '../task-edit/task-edit.component';
 
 @Component({
   selector: 'app-task-list',
@@ -38,7 +39,7 @@ export class TaskListComponent implements OnInit {
     this.taskService.searchTasks(searchTerm);
   }
 
-  public openDialog(task: Task): void {
+  public openDetailsDialog(task: Task): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
@@ -47,4 +48,12 @@ export class TaskListComponent implements OnInit {
     this.dialog.open(TaskDetailsComponent, dialogConfig)
   }
  
+  public openEditDialog(task: Task): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = task;
+
+    this.dialog.open(TaskEditComponent, dialogConfig)
+  }
 }
