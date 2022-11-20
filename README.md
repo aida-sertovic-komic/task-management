@@ -1,6 +1,9 @@
 # TaskManagementApp
 
-Task Management App is an Angular application for creating, editing and viewing tasks. Some of the functionalities include:
+Task Management App is an Angular application for creating, editing and viewing tasks.
+The design of the application is simple and intuitive made with accessibility and responsiveness in mind. The focus was on the simplicity of creating and viewing the tasks in order to provide a good user experience in managing the tasks.
+
+Some of the functionalities include:
 - Tasks are stored and read from Local Storage, and they are sorted by priority and due date upon display
 - Tasks are listed in a table with pagination
 - ID, color, priority and due date are randomly generated during task creation
