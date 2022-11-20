@@ -8,15 +8,6 @@ import { Task } from "../models/task.model";
 export class TaskService {
     private tasks$ = new BehaviorSubject<Task[]>([]);
     private tasks: Task[] = this.parseTasks();
-    private selectedTask$ = new Subject<Task>;
-
-    public selectTask(task: Task): void {
-        this.selectedTask$.next(task);
-    }
-
-    public getSelectedTaskObservable(): Observable<Task> {
-        return this.selectedTask$;
-    }
 
     public parseTasks(): Task[] {
         const taskString: string = localStorage.getItem('Tasks') ?? '[]';
@@ -35,7 +26,7 @@ export class TaskService {
 
     public addTask(task: Task): void {
         this.tasks.push(task);
-        localStorage.setItem('Tasks', JSON.stringify(this.tasks))
+        localStorage.setItem('Tasks', JSON.stringify(this.tasks));
         this.tasks$.next(this.sortTasks(this.tasks));
     }
 
@@ -53,7 +44,7 @@ export class TaskService {
             return task.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
         })
 
-        this.tasks$.next(filteredTasks)
+        this.tasks$.next(filteredTasks);
     }
 
     public sortTasks(tasks: Task[]): Task[] {

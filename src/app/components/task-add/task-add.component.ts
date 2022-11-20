@@ -61,7 +61,18 @@ export class TaskAddComponent implements OnInit {
     const maxColorValue = 0xFFFFFF;
     let randomNumber = Math.random() * maxColorValue; //create random number
     randomNumber = Math.floor(randomNumber); //convert float number to an integer
-    const randomHexColor = '#' + randomNumber.toString(16); //convert integer to hexadecimal string
+    let randomNumberString = randomNumber.toString(16); //convert integer to hexadecimal string
+    
+    // add leading zeros if random color string less than 6 characters
+    if (randomNumberString.length < 6) {
+      const randomNumberLength = randomNumberString.length;
+      const leadingZerosLength = 6 - randomNumberLength;
+      const leadingZeros = "0".repeat(leadingZerosLength);
+
+      randomNumberString = leadingZeros + randomNumberString;
+    }
+
+    const randomHexColor = '#' + randomNumberString;
     return randomHexColor;
   }
 
