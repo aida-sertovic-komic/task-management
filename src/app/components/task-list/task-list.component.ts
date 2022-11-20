@@ -17,8 +17,10 @@ export class TaskListComponent implements OnInit {
   ngOnInit(): void {
     this.items$ = this.taskService.getTasksObservable();
     this.taskService.initTasks();
-    this.items$.subscribe(el => console.log(el, 'task.list'))
+  }
 
+  public searchTasks(searchTerm: string): void{
+    this.taskService.searchTasks(searchTerm);
   }
 
   public openDetails(task: Task): void {

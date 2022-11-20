@@ -34,8 +34,10 @@ export class TaskAddComponent implements OnInit {
     }
   
     public createTask(): void {
+     if (this.taskForm.valid){
       this.initForm();
-      this.taskService.addTask(this.taskForm.value);
+     this.taskService.addTask(this.taskForm.value);
+     }
     }
   
     public addPriority(): void {
@@ -61,6 +63,8 @@ export class TaskAddComponent implements OnInit {
       const randomHexColor = '#' + randomNumber.toString(16); //convert integer to hexadecimal string
       return randomHexColor;
     }  
+
+    get title() { return this.taskForm.get('title'); }
   }
 
 

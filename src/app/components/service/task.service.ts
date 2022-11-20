@@ -32,4 +32,11 @@ export class TaskService {
         this.tasks$.next(this.tasks);
         localStorage.setItem('Tasks', JSON.stringify(this.tasks))
     }
+    
+    public searchTasks(searchTerm: string): void {
+        const filteredTasks = this.tasks.filter(task => {
+            return task.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+        })
+        this.tasks$.next(filteredTasks)
+    }
 }
